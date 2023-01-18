@@ -18,6 +18,7 @@ def usage():
     print("sprayer.py -u users.txt -f mydomain.local -p password1234 -a http://authForm.mydomain.local/")
     sys.exit(0)
 
+#Core sprayer function
 def startSpray(userfile, fqdn, password, attackurl):
     
     HTTP_AUTH_FAIL_CODE = 401
