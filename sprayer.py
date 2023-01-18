@@ -9,7 +9,9 @@ password = ''
 attackurl = ''
 
 def usage():
-    return True
+    print("Usage: sprayer.py -u USERS_FILE -f DC_FQDN -p PASSWORD -a URL_TO_ATTACK")
+    print("Example: ")
+    print("netsnake.py -u users.txt -f dc.mydomain.com -p password1234 -a http://authForm.mydomain.com/")
 
 def startSpray(userfile, fqdn, password, attackurl):
     return True
