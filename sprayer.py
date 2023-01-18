@@ -38,7 +38,7 @@ def startSpray(userfile, fqdn, password, attackurl):
             continue
         if(response.status_code == HTTP_AUTH_FAIL_CODE):
             print(colored("[-] Failed login with Username: " +user, "red"))
-    print("[*] Password spray attack completed, " +str(count)+ " valid credential pairs found")
+    print(colored("[*] Password spray attack completed, " +str(count)+ " valid credential pairs found", "yellow"))
 
 def main(argv):
     
