@@ -11,9 +11,9 @@ password = ''
 attackurl = ''
 
 def usage():
-    print("Usage: sprayer.py -u USERS_FILE -f DC_FQDN -p PASSWORD -a URL_TO_ATTACK")
-    print("Example: ")
-    print("sprayer.py -u users.txt -f mydomain.local -p password1234 -a http://authForm.mydomain.local/")
+    print(colored("Usage: sprayer.py -u USERS_FILE -f DOMAIN -p PASSWORD -a URL_TO_ATTACK", "light_green"))
+    print(colored("Example: ", "light_green"))
+    print(colored("sprayer.py -u users.txt -f mydomain.local -p password1234 -a http://authForm.mydomain.local/", "light_green"))
     sys.exit(0)
 
 #Core sprayer function
