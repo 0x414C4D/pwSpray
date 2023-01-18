@@ -5,8 +5,6 @@ import getopt
 from termcolor import colored
 import os
 
-os.system('color')
-
 userfile = ''
 fqdn = ''
 password = ''
@@ -42,6 +40,7 @@ def startSpray(userfile, fqdn, password, attackurl):
 
 def main(argv):
     
+    os.system('color')
     global userfile
     global fqdn
     global password
