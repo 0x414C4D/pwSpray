@@ -1,5 +1,5 @@
 import requests 
-import HttpNtlmAuth
+import requests_ntlm
 import sys
 import getopt
 
@@ -12,6 +12,7 @@ def usage():
     print("Usage: sprayer.py -u USERS_FILE -f DC_FQDN -p PASSWORD -a URL_TO_ATTACK")
     print("Example: ")
     print("netsnake.py -u users.txt -f dc.mydomain.com -p password1234 -a http://authForm.mydomain.com/")
+    sys.exit(0)
 
 def startSpray(userfile, fqdn, password, attackurl):
     return True
@@ -59,4 +60,4 @@ def main(argv):
         usage()
         sys.exit(0)
 
-    
+main(sys.argv)
